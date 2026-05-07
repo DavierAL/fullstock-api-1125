@@ -1,4 +1,5 @@
 import { Router } from "express";
+import * as cartItemController from "./controllers/cart-item.controller.ts";
 import * as categoryController from "./controllers/category.controller.ts";
 import * as productController from "./controllers/product.controller.ts";
 
@@ -21,5 +22,8 @@ router.get(
 
 // Obtener detalle de un producto.
 router.get("/products/:slug", productController.getProduct);
+
+// Agregar un producto al carrito
+router.post("/cart/items", cartItemController.createCartItem);
 
 export default router;
