@@ -29,3 +29,17 @@ export async function create(
 
   return camelCaseKeys(result.rows[0]);
 }
+
+export async function findByCartAndProduct(
+  productId: number,
+  cartId: number,
+): Promise<CartItem | null> {
+  const result = await db.query<CartItemRow>(
+    `
+    SELECT * FROM cart_items
+    WHERE cart_id = $1 AND product_id = $2;`,
+    [cartId, productId],
+  );
+
+  return result.rows[0] !== undefined ? camelCaseKeys(result.rows[0]) : null;
+}

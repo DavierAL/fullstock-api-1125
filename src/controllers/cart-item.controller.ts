@@ -49,5 +49,5 @@ export async function createCartItem(
     quantity,
   );
 
-  res.json({ status: "success", data: item });
+  res.status(201).json({ status: "success", data: item });
 }
