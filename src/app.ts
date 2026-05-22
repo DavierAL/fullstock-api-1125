@@ -4,11 +4,11 @@ import {
   notFoundHandler,
 } from "./middlewares/error.middleware.ts";
 import { sessionMiddleware } from "./middlewares/session.middleware.ts";
-import router from "./routes.ts";
+import router from "./routes.ts"; 
 
 const app = express();
 app.use(express.json());
-app.use(sessionMiddleware);
+app.use(sessionMiddleware); 
 
 app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
